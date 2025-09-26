@@ -1,0 +1,78 @@
+import java.util.Scanner;
+
+public class multiplication {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter matrix 1 rows:");
+        int r1 = sc.nextInt();
+        System.out.println("Enter matrix 1 columns:");
+        int c1 = sc.nextInt();
+        System.out.println("Enter matrix 2 rows:");
+        int r2 = sc.nextInt();
+        System.out.println("Enter matrix 2 columns:");
+        int c2 = sc.nextInt();
+
+        // Condition for matrix multiplication
+        if (c1 == r2) {
+            int mat1[][] = new int[r1][c1];
+            int mat2[][] = new int[r2][c2];
+
+            // Input for matrix 1
+            System.out.println("Enter elements of matrix 1:");
+            for (int i = 0; i < r1; i++) {
+                for (int j = 0; j < c1; j++) {
+                    mat1[i][j] = sc.nextInt();
+                }
+            }
+
+            // Input for matrix 2
+            System.out.println("Enter elements of matrix 2:");
+            for (int i = 0; i < r2; i++) {
+                for (int j = 0; j < c2; j++) {
+                    mat2[i][j] = sc.nextInt();
+                }
+            }
+
+            // Printing matrix 1
+            System.out.println("Matrix 1:");
+            for (int i = 0; i < r1; i++) {
+                for (int j = 0; j < c1; j++) {
+                    System.out.print(mat1[i][j] + " ");
+                }
+                System.out.println();
+            }
+
+            // Printing matrix 2
+            System.out.println("Matrix 2:");
+            for (int i = 0; i < r2; i++) {
+                for (int j = 0; j < c2; j++) {
+                    System.out.print(mat2[i][j] + " ");
+                }
+                System.out.println();
+            }
+
+            // Result matrix
+            int res[][] = new int[r1][c2];
+            for (int i = 0; i < r1; i++) {
+                for (int j = 0; j < c2; j++) {
+                    for (int k = 0; k < c1; k++) {
+                        res[i][j] += mat1[i][k] * mat2[k][j];
+                    }
+                }
+            }
+
+            // Printing result
+            System.out.println("Resultant Matrix:");
+            for (int i = 0; i < r1; i++) {
+                for (int j = 0; j < c2; j++) {
+                    System.out.print(res[i][j] + " ");
+                }
+                System.out.println();
+            }
+        } else {
+            System.out.println("Invalid dimensions! Multiplication not possible.");
+        }
+        sc.close();
+    }
+}
